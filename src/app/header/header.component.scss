@@ -3,7 +3,7 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	padding-top: 30px;
-	padding-bottom: 40px;
+	padding-bottom: 35px;
 	border-bottom: 1px solid hsl(220, 14%, 75%);
 }
 
@@ -11,16 +11,16 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
 
-	nav {
-		display: flex;
-		margin-left: 4rem;
-		a {
-			display: inline-block;
-			margin-right: 2rem;
-			text-decoration: none;
-			color: hsl(219, 9%, 45%);
-		}
+nav {
+	display: flex;
+	margin-left: 4rem;
+	a {
+		display: inline-block;
+		margin-right: 2rem;
+		text-decoration: none;
+		color: hsl(219, 9%, 45%);
 	}
 }
 
@@ -46,11 +46,71 @@ header {
 
 #cart {
 	position: absolute;
-	left: -500px;
+	right: -25px;
 	top: 50px;
-	width: 200px;
-	border: 1px solid gray;
-	list-style: none;
+	width: 22rem;
+	box-shadow: 0 0 30px lightgray;
+	border-radius: 10px;
+	background-color: white;
+	display: none;
+
+	h1 {
+		border-bottom: 1px solid hsl(220, 14%, 75%);
+		font-weight: 600;
+		padding: 15px 20px 20px;
+		margin: 0;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+}
+
+.cart-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 15px;
+	padding: 0 20px;
+
+	p {
+		margin: 0;
+	}
+}
+
+.cart-item-img {
+	width: 15%;
+	min-width: 45px;
+	border-radius: 5px;
+}
+
+.del-cart-item-btn {
+	background-color: transparent;
+	border: none;
+}
+
+#checkout-btn-container {
+	padding: 0 20px 25px;
+}
+
+#checkout-btn {
+	width: 100%;
+	padding: 15px 10px;
+	background-color: hsl(26, 100%, 55%);
+	border-radius: 10px;
+	border-width: 0;
+	font-weight: 600;
+}
+
+#cart.shown {
+	display: block;
+}
+
+#empty-cart-text {
+	text-align: center;
+	margin: 80px 0;
+	padding: 0 20px;
 }
 
 #avatar-img {
@@ -58,7 +118,24 @@ header {
 }
 
 @media (max-width: 850px) {
-	#menu-btn-sm {;
+	#menu-btn-sm {
 		display: inline-block;
+	}
+
+	nav {
+		display: block;
+		position: fixed;
+		background-color: white;
+		margin-left: 0;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 80vw;
+
+		a {
+			display: block;
+			margin-right: 0;
+			margin-top: 2rem;
+		}
 	}
 }

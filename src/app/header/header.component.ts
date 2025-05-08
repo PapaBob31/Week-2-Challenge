@@ -10,6 +10,7 @@ import { CartDetailsService } from "../cart/cart-details.service"
 export class HeaderComponent {
   cartService: CartDetailsService = inject(CartDetailsService);
   cartContent: {id: string; quantity: number}[];
+  cartIsVisible = false
 
   constructor() {
     this.cartContent = this.cartService.batches
@@ -18,5 +19,9 @@ export class HeaderComponent {
   removeContent(event: MouseEvent) {
     const id = (event.target as HTMLButtonElement).dataset["batchId"]!
     this.cartService.removeBatch(id)
+  }
+
+  toggleCartVisibility() {
+    this.cartIsVisible = !this.cartIsVisible
   }
 }

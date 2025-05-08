@@ -3,7 +3,7 @@
 		<button id="menu-btn-sm">
 			<img src="/assets/icon-menu.svg"/>
 		</button>
-    	<h1><img src="/assets/logo.svg" alt="Sneakers logo"></h1>
+    	<h1 id="site-logo"><img src="/assets/logo.svg" alt="Sneakers logo"></h1>
     	<nav>
 	      <a href="">Collections</a>
 	      <a href="">Men</a>
@@ -13,14 +13,27 @@
 	    </nav>
     </div>
     <div id="cart-profile-container">
-      <button id="cart-btn"><img src="/assets/icon-cart.svg"></button>
-      <ul id="cart">
-      	@for (content of cartContent; track content.id) {
-      		<li>{{ content.quantity }} <button attr.data-batchId="{{ content.id }}">x</button></li>
-      	} @empty {
-      		<li>Your Cart is Empty</li>
+      <button id="cart-btn" (click)="toggleCartVisibility()"><img src="/assets/icon-cart.svg"></button>
+      <section id="cart" [class.shown]="cartIsVisible">
+      	<h1>Cart</h1>
+      	@if (cartContent.length > 0) {
+      		<ul>
+		      	@for (content of cartContent; track content.id) {
+		      		<li class="cart-item">
+		      			<img src="/assets/image-product-1-thumbnail.jpg" class="cart-item-img"/> <!-- This shouldn't be hardcoded -->
+		      			<div>
+		      				<p>Fall Limited Edition Sneakers</p>
+		      				<span>$125.00 x {{ content.quantity }}</span> <strong>$375.00</strong>
+		      			</div>
+		      			<button class="del-cart-item-btn" attr.data-batchId="{{ content.id }}"><img src="/assets/icon-delete.svg"/></button>
+		      		</li>
+		      	}
+		      </ul>
+	      	<div id="checkout-btn-container"><button id="checkout-btn">Checkout</button></div>
+      	}@else {
+	      	<p id="empty-cart-text">Your cart is empty.</p>
       	}
-      </ul>
+      </section>
       <div><img src="/assets/image-avatar.png" id="avatar-img"></div>
 	</div>
 </header>
