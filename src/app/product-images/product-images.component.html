@@ -1,0 +1,14 @@
+<section id="product-images">
+	<section class="normal-display">
+		<div><img src="{{ displayedImg.imgLink }}"></div>
+		<ul>
+			@for (img of images; track img.name) {
+				@if (img.name === displayedImg.name) {
+					<li><img id="displayed-img-thumbnail" src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/></li>
+				} @else {
+					<li><img src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}" (click)="changeDisplayedImage($event)"/></li>
+				}
+			}
+		</ul>
+	</section>
+</section>

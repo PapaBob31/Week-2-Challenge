@@ -1,0 +1,18 @@
+<section id="product-slideshow">
+	<ul>
+		@for (img of images; track img.name) {
+			<li><img id="main-slideshow-img" src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/></li>
+		}
+	</ul>
+	<button><img src="/assets/icon-previous.svg"/></button>
+	<button><img src="/assets/icon-next.svg"/></button>
+	<ul>
+		@for (img of images; track img.name) {
+			@if (img.name === displayedImg.name) {
+				<li><img id="main-slideshow-img-thumbnail" src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/></li>
+			} @else {
+				<li><img src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}" (click)="changeDisplayedImage($event)"/></li>
+			}
+		}
+	</ul>
+</section>

@@ -1,0 +1,26 @@
+<header>
+	<div id="logo-nav-container">
+		<button id="menu-btn-sm">
+			<img src="/assets/icon-menu.svg"/>
+		</button>
+    	<h1><img src="/assets/logo.svg" alt="Sneakers logo"></h1>
+    	<nav>
+	      <a href="">Collections</a>
+	      <a href="">Men</a>
+	      <a href="">Women</a>
+	      <a href="">About</a>
+	      <a href="">Contact</a>
+	    </nav>
+    </div>
+    <div id="cart-profile-container">
+      <button id="cart-btn"><img src="/assets/icon-cart.svg"></button>
+      <ul id="cart">
+      	@for (content of cartContent; track content.id) {
+      		<li>{{ content.quantity }} <button attr.data-batchId="{{ content.id }}">x</button></li>
+      	} @empty {
+      		<li>Your Cart is Empty</li>
+      	}
+      </ul>
+      <div><img src="/assets/image-avatar.png" id="avatar-img"></div>
+	</div>
+</header>
