@@ -123,6 +123,8 @@ nav {
 	ul {
 		list-style: none;
 		padding: 0;
+		max-height: 150px;
+		overflow-y: auto;
 	}
 }
 
@@ -275,6 +277,13 @@ nav {
 	#cart-btn-container {
 		margin-right: 10px;
 	}
+
+	#cart {
+		right: 0;
+		top: 60px;
+		width: 90vw;
+	}
+
 	#menu-btn-sm {
 		margin-right: 10px;
 	}
