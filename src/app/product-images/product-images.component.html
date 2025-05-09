@@ -4,7 +4,7 @@
 		<ul>
 			@for (img of images; track img.name) {
 				@if (img.name === displayedImg.name) {
-					<li><img id="displayed-img-thumbnail" src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/></li>
+					<li id="displayed-img-thumbnail"><img src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/></li>
 				} @else {
 					<li><img src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}" (click)="changeDisplayedImage($event)"/></li>
 				}
@@ -15,24 +15,36 @@
 <section id="product-slideshow" [class.onScreen]="slideShowVisible">
 	<div id="slideshow-container">
 		<button id="close-slideshow-btn" (click)="hideSlideShow()">
-			<img src="/assets/icon-close.svg"/>
+			<svg width="14" height="15" xmlns="http://www.w3.org/2000/svg"><path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="#69707D" fill-rule="evenodd"/></svg>
 		</button>
 		<div id="slideshow-images-container">
-			<ul id="slideshow-images">
+			<ul id="slideshow-images" [style]="slideStyle">
 				@for (img of images; track img.name) {
-					<li><img id="main-slideshow-img" src="{{ img.imgLink }}" attr.data-name="{{ img.name }}"/></li>
+					<li>
+						<img id="main-slideshow-img" src="{{ img.imgLink }}" attr.data-name="{{ img.name }}"/>
+					</li>
 				}
 			</ul>
 		</div>
-		<button id="prev-btn"><img src="/assets/icon-previous.svg"/></button>
-		<button id="next-btn"><img src="/assets/icon-next.svg"/></button>
+		<button id="prev-btn" (click)="slideRight()">
+			<svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+				<path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/>
+			</svg>
+		</button>
+		<button id="next-btn" (click)="slideLeft()">
+			<svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+				<path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/>
+			</svg>
+		</button>
 	</div>
 	<ul id="slideshow-thumbnails">
 		@for (img of images; track img.name) {
-			@if (img.name === displayedImg.name) {
-				<li><img id="main-slideshow-img-thumbnail" src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/></li>
+			@if (img.name === displayedSlideThumbNail) {
+				<li id="displayed-slide-thumbnail">
+					<img src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/>
+				</li>
 			} @else {
-				<li><img src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}" (click)="changeDisplayedImage($event)"/></li>
+				<li><img src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/></li>
 			}
 		}
 	</ul>

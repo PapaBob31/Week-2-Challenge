@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
 export class ProductImagesComponent {
   displayedImg: {name: string; thumbNailLink: string; imgLink: string};
   slideShowVisible = false;
+  slideLength = 0;
+  slideStyle = `transform: translateX(0)`
+  displayedSlideThumbNail = ""
   images = [
     {
      name: "image-1",
@@ -35,6 +38,7 @@ export class ProductImagesComponent {
 
   constructor() {
     this.displayedImg = this.images[0]
+    this.displayedSlideThumbNail = this.images[this.slideLength].name
   }
 
   changeDisplayedImage(event: MouseEvent) {
@@ -42,11 +46,29 @@ export class ProductImagesComponent {
   }
 
   displaySlideShow() {
-    console.log("oh boy")
     this.slideShowVisible = true;
   }
 
   hideSlideShow() {
     this.slideShowVisible = false;
+    this.slideLength = 0;
+    this.slideStyle = `transform: translateX(0)`
+    this.displayedSlideThumbNail = this.images[this.slideLength].name
+  }
+
+  slideRight() {
+    if (this.slideLength === 0)
+      return;
+    else this.slideLength--;
+    this.slideStyle = `transform: translateX(-${this.slideLength*100}%)`
+    this.displayedSlideThumbNail = this.images[this.slideLength].name
+  }
+
+  slideLeft() {
+    if (this.slideLength === 3)
+      return;
+    else this.slideLength++;
+    this.slideStyle = `transform: translateX(-${this.slideLength*100}%)`
+    this.displayedSlideThumbNail = this.images[this.slideLength].name
   }
 }

@@ -21,6 +21,8 @@ export class ProductDetailsComponent {
   }
 
   addToCart() {
+    if (this.quantity == 0)
+      return;
     this.cartService.addBatch(this.quantity)
     this.quantity = 0
   }

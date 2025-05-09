@@ -15,19 +15,26 @@
 	    </nav>
     </div>
     <div id="cart-profile-container">
-      <button id="cart-btn" (click)="toggleCartVisibility()"><img src="/assets/icon-cart.svg"></button>
+    	<div id="cart-btn-container" (click)="toggleCartVisibility()">
+      	<button id="cart-btn"><img src="/assets/icon-cart.svg"></button>
+      	@if (cartContent.length > 0) {
+      		<span id="cart-quantity">{{ cartContent.length }}</span>
+      	}
+      </div>
       <section id="cart" [class.shown]="cartIsVisible">
       	<h1>Cart</h1>
       	@if (cartContent.length > 0) {
       		<ul>
 		      	@for (content of cartContent; track content.id) {
 		      		<li class="cart-item">
-		      			<img src="/assets/image-product-1-thumbnail.jpg" class="cart-item-img"/> <!-- This shouldn't be hardcoded -->
+		      			<img src="/assets/image-product-1-thumbnail.jpg" class="cart-item-img"/>
 		      			<div>
 		      				<p>Fall Limited Edition Sneakers</p>
-		      				<span>$125.00 x {{ content.quantity }}</span>&nbsp;<strong>$375.00</strong>
+		      				<span>$125.00 x {{ content.quantity }}</span>&nbsp;<strong>${{ 125.00 * content.quantity }}</strong>
 		      			</div>
-		      			<button class="del-cart-item-btn" attr.data-batchId="{{ content.id }}"><img src="/assets/icon-delete.svg"/></button>
+		      			<button class="del-cart-item-btn" (click)="removeContent($event)" attr.data-batchid="{{ content.id }}">
+		      				<img src="/assets/icon-delete.svg"/>
+		      			</button>
 		      		</li>
 		      	}
 		      </ul>
@@ -36,6 +43,6 @@
 	      	<p id="empty-cart-text">Your cart is empty.</p>
       	}
       </section>
-      <div><img src="/assets/image-avatar.png" id="avatar-img"></div>
+      <div id="avatar-img"></div>
 	</div>
 </header>

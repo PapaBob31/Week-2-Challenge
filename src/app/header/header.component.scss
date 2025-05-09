@@ -1,14 +1,19 @@
+@use "../../styles.scss";
+
 header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-top: 30px;
-	padding-bottom: 35px;
-	border-bottom: 1px solid hsl(220, 14%, 75%);
+	padding-top: 35px;
+	border-bottom: 1px solid styles.$grayishBlue;
+
+	h1 {
+		margin: 0;
+	}
 }
 
 #mobile-menu-overlay {
-	display: none;
+	visibility: hidden;
 	position: fixed;
 	background-color: rgba(0,0,0,0.8);
 	top: 0;
@@ -16,22 +21,41 @@ header {
 	height: 100vh;
 	width: 100vw;
 	z-index: 20;
+	opacity: 0;
+	transition-duration: .5s;
+	transition-property: opacity;
+
 }
 
 #logo-nav-container {
 	display: flex;
+	align-items: flex-start;
 	justify-content: space-between;
-	align-items: center;
 }
 
 nav {
 	display: flex;
 	margin-left: 4rem;
 	a {
-		display: inline-block;
+		display: block;
+		padding-bottom: 40px;
 		margin-right: 2rem;
 		text-decoration: none;
-		color: hsl(219, 9%, 45%);
+		color: styles.$darkGrayishBlue;
+		border-bottom: 4px solid transparent;
+		transition-duration: .5s;
+		transition-property: border-color;
+
+	}
+
+	a:hover {
+		color: black;
+		border-bottom: 4px solid styles.$orange;
+	}
+
+	a:active {
+		color: black;
+		border-bottom: 4px solid styles.$orange;
 	}
 
 	button {
@@ -45,6 +69,7 @@ nav {
 	background-color: transparent;
 	border: none;
 	display: none;
+	cursor: pointer;
 }
 
 #cart-profile-container {
@@ -54,11 +79,27 @@ nav {
 	justify-content: space-between;
 }
 
+#cart-btn-container {
+	position: relative;
+	margin-right: 2rem;
+	span {
+		font-size: 10px;
+		font-weight: bold;
+		color: white;
+		position: absolute;
+		top: -5px;
+		right: 0;
+		padding: 1px 7px;
+		background-color: styles.$orange;
+		border-radius: 7px;
+	}
+}
+
 #cart-btn {
 	height: fit-content;
 	background-color: transparent;
 	border: none;
-	margin-right: 3rem;
+	cursor: pointer;
 }
 
 #cart {
@@ -66,13 +107,14 @@ nav {
 	right: -25px;
 	top: 50px;
 	width: 22rem;
-	box-shadow: 0 0 30px lightgray;
+	box-shadow: 0 10px 25px styles.$shadowColor;
 	border-radius: 10px;
 	background-color: white;
 	display: none;
+	z-index: 20;
 
 	h1 {
-		border-bottom: 1px solid hsl(220, 14%, 75%);
+		border-bottom: 1px solid styles.$grayishBlue;
 		font-weight: 600;
 		padding: 15px 20px 20px;
 		margin: 0;
@@ -92,7 +134,12 @@ nav {
 	padding: 0 20px;
 
 	p {
+		color: styles.$darkGrayishBlue;
 		margin: 0;
+	}
+
+	strong {
+		font-weight: bold;
 	}
 }
 
@@ -105,6 +152,7 @@ nav {
 .del-cart-item-btn {
 	background-color: transparent;
 	border: none;
+	cursor: pointer;
 }
 
 #checkout-btn-container {
@@ -118,6 +166,7 @@ nav {
 	border-radius: 10px;
 	border-width: 0;
 	font-weight: 600;
+	cursor: pointer;
 }
 
 #cart.shown {
@@ -132,6 +181,20 @@ nav {
 
 #avatar-img {
 	width: 3rem;
+	height: 3rem;
+	background-image: url("/assets/image-avatar.png");
+	background-position: center;
+	background-size: cover;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+#avatar-img:hover {
+	border: 2px solid styles.$orange;
+}
+
+#avatar-img:active {
+	border: 2px solid styles.$orange;
 }
 
 @media (max-width: 1000px) {
@@ -141,10 +204,6 @@ nav {
 		a {
 			margin-right: 1rem;
 		}
-	}
-
-	#cart-btn {
-		margin-right: 2rem;
 	}
 }
 
@@ -156,33 +215,38 @@ nav {
 	}
 
 	#menu-btn-sm {
-		display: inline-block;
+		display: block;
 		margin-right: 2rem;
 	}
 
 	nav {
-		display: none;
+		display: block;
 		position: fixed;
 		background-color: white;
 		margin-left: 0;
 		top: 0;
-		left: 0;
+		left: -100%;
 		height: 100vh;
 		width: 80vw;
 		padding: 30px;
 		z-index: 20;
+		transition-duration: .3s;
+		transition-property: left;
+		transition-timing-function: ease-in-out;
 
 		a {
 			display: block;
 			margin-right: 0;
 			margin-top: 2rem;
-			font-weight: 600;
+			font-weight: bold;
+			padding-bottom: 0;
+			font-size: 1.2rem;
 			color: black;
 		}
 
 		button {
 			display: block;
-			margin-bottom: 40px;
+			margin-bottom: 50px;
 		}
 	}
 
@@ -194,11 +258,28 @@ nav {
 
 	header.menuVisible {
 		nav {
-			display: block;
+			left: 0;
 		}
 
 		#mobile-menu-overlay {
-			display: block;
+			visibility: visible;
+			opacity: 100;
 		}
+	}
+}
+
+@media (max-width: 500px) {
+	header {
+		padding: 20px;
+	}
+	#cart-btn-container {
+		margin-right: 10px;
+	}
+	#menu-btn-sm {
+		margin-right: 10px;
+	}
+	#avatar-img {
+		width: 2rem;
+		height: 2rem;
 	}
 }

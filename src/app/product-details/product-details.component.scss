@@ -1,12 +1,32 @@
+@use "../../styles.scss";
+
 #product-details {
 	small {
-		font-size: 0.8rem;
-		font-weight: 600
+		font-size: 0.7rem;
+		font-weight: 600;
+		color: styles.$darkGrayishBlue;
+		letter-spacing: 2px;
+		font-weight: bold;
 	}
 
 	h2 {
+		margin: 10px 0 20px;
 		font-size: 2.5rem;
 		font-weight: bold;
+		color: styles.$veryDarkBlue;
+	}
+}
+
+#description {
+	color: styles.$darkGrayishBlue;
+	line-height: 1.5;
+}
+
+#price-details {
+	margin: 25px 0;
+
+	p {
+		margin: 0;
 	}
 }
 
@@ -15,19 +35,23 @@
 	margin-right: 2rem;
 	font-size: 2rem;
 	font-weight: bold;
+	color: styles.$veryDarkBlue;
 }
 
 #discount {
 	display: inline-block;
 	color: white;
-	padding: 5px 7px;
+	padding: 5px 10px;
 	font-weight: bold;
-	background-color: black;
+	background-color: styles.$veryDarkBlue;
 	border-radius: 5px;
 }
 
 #slashed-price {
 	text-decoration: line-through;
+	color: styles.$darkGrayishBlue;
+	font-weight: bold;
+	margin-top: 10px;
 }
 
 #cart-interaction {
@@ -41,15 +65,24 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: hsl(220, 14%, 75%);
-	padding: 15px 10px;
+	background-color: styles.$lightGrayishBlue;
+	padding: 15px;
 	width: 38%;
 	border-radius: 10px;
 
 	button {
 		background-color: transparent;
 		border: none;
+		cursor: pointer;		
 	}
+
+	button:hover {
+		opacity: 70%;
+	}
+}
+
+#quantity {
+	font-weight: bold;
 }
 
 #cart-add-btn {
@@ -58,18 +91,45 @@
 	align-items: center;
 	width: 60%;
 	padding: 15px 10px;
-	background-color: hsl(26, 100%, 55%);
+	background-color: styles.$orange;
 	border-width: 0;
 	border-radius: 10px;
+	cursor: pointer;
+
+	span {
+		margin-left: 20px;
+		font-weight: bold;
+	}
 }
 
 #cart-add-btn:active {
-	background-color: hsl(25, 100%, 94%)
+	background-color: styles.$paleOrange;
+}
+
+#cart-add-btn:hover {
+	background-color: styles.$paleOrange;
 }
 
 @media (max-width: 850px) {
 	#product-details {
 		padding: 20px;
+	}
+
+	#product-details h2 {
+		margin: 15px 0;
+		font-size: 1.8rem;
+	}
+
+	#price {
+		font-size: 1.8rem;
+	}
+
+	#slashed-price {
+		margin-top: 0;
+	}
+
+	#discount {
+		padding: 3px 10px;
 	}
 
 	#cart-interaction {
@@ -84,6 +144,13 @@
 	#cart-add-btn {
 		width: 100%;
 		margin-bottom: 20px;
+		box-shadow: 0px 5px 15px styles.$orange;
+	}
+
+	#price-details {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 }

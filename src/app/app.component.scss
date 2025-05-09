@@ -2,6 +2,7 @@ main {
 	padding: 5rem 0 0;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 app-product-images{
@@ -33,12 +34,13 @@ app-product-details {
 	}
 	app-product-images{
 		min-width: unset;
-		width: full;
+		width: 100%;
+		margin-right: 0;
 	}
 
 	app-product-details {
 		min-width: unset;
-		width: full;
+		width: 100%;
 	}
 
 }

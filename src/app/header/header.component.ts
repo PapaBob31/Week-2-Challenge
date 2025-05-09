@@ -18,8 +18,9 @@ export class HeaderComponent {
   }
 
   removeContent(event: MouseEvent) {
-    const id = (event.target as HTMLButtonElement).dataset["batchId"]!
+    const id = (event.currentTarget as HTMLButtonElement).dataset["batchid"]!
     this.cartService.removeBatch(id)
+    this.cartContent = this.cartService.getBatches();
   }
 
   toggleCartVisibility() {

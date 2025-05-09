@@ -26,8 +26,10 @@ export class CartDetailsService {
   }
 
   removeBatch(id: string) {
+    console.log(id, this.batches);
     if (this.batches.length === 0)
       return;
     this.batches = this.batches.filter(batch => batch.id !== id);
+    console.log(this.batches)
   }
 }
