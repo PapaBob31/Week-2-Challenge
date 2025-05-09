@@ -11,6 +11,7 @@ export class HeaderComponent {
   cartService: CartDetailsService = inject(CartDetailsService);
   cartContent: {id: string; quantity: number}[];
   cartIsVisible = false
+  menuIsVisible = false
 
   constructor() {
     this.cartContent = this.cartService.batches
@@ -23,5 +24,13 @@ export class HeaderComponent {
 
   toggleCartVisibility() {
     this.cartIsVisible = !this.cartIsVisible
+  }
+
+  showMenu() {
+    this.menuIsVisible = true;
+  }
+
+  hideMenu() {
+    this.menuIsVisible = false;
   }
 }

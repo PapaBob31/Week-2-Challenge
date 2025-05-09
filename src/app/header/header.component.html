@@ -1,10 +1,12 @@
-<header>
+<header [class.menuVisible]="menuIsVisible">
+	<div id="mobile-menu-overlay"></div>
 	<div id="logo-nav-container">
-		<button id="menu-btn-sm">
+		<button id="menu-btn-sm" (click)="showMenu()">
 			<img src="/assets/icon-menu.svg"/>
 		</button>
     	<h1 id="site-logo"><img src="/assets/logo.svg" alt="Sneakers logo"></h1>
     	<nav>
+    		<button><img src="/assets/icon-close.svg" alt="menu close icon" (click)="hideMenu()"></button>
 	      <a href="">Collections</a>
 	      <a href="">Men</a>
 	      <a href="">Women</a>
