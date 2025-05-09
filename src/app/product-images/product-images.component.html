@@ -1,6 +1,6 @@
 <section id="product-images">
 	<section class="normal-display">
-		<div><img src="{{ displayedImg.imgLink }}"></div>
+		<div><img src="{{ displayedImg.imgLink }}" (click)="displaySlideShow()"></div>
 		<ul>
 			@for (img of images; track img.name) {
 				@if (img.name === displayedImg.name) {
@@ -11,4 +11,29 @@
 			}
 		</ul>
 	</section>
+</section>
+<section id="product-slideshow" [class.onScreen]="slideShowVisible">
+	<div id="slideshow-container">
+		<button id="close-slideshow-btn" (click)="hideSlideShow()">
+			<img src="/assets/icon-close.svg"/>
+		</button>
+		<div id="slideshow-images-container">
+			<ul id="slideshow-images">
+				@for (img of images; track img.name) {
+					<li><img id="main-slideshow-img" src="{{ img.imgLink }}" attr.data-name="{{ img.name }}"/></li>
+				}
+			</ul>
+		</div>
+		<button id="prev-btn"><img src="/assets/icon-previous.svg"/></button>
+		<button id="next-btn"><img src="/assets/icon-next.svg"/></button>
+	</div>
+	<ul id="slideshow-thumbnails">
+		@for (img of images; track img.name) {
+			@if (img.name === displayedImg.name) {
+				<li><img id="main-slideshow-img-thumbnail" src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}"/></li>
+			} @else {
+				<li><img src="{{ img.thumbNailLink }}" attr.data-name="{{ img.name }}" (click)="changeDisplayedImage($event)"/></li>
+			}
+		}
+	</ul>
 </section>

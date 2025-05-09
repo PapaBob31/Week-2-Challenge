@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 
 export class ProductImagesComponent {
   displayedImg: {name: string; thumbNailLink: string; imgLink: string};
+  slideShowVisible = false;
   images = [
     {
      name: "image-1",
@@ -38,5 +39,14 @@ export class ProductImagesComponent {
 
   changeDisplayedImage(event: MouseEvent) {
     this.displayedImg = this.images.find((img) => img.name === (event.target as HTMLImageElement).dataset["name"])!
+  }
+
+  displaySlideShow() {
+    console.log("oh boy")
+    this.slideShowVisible = true;
+  }
+
+  hideSlideShow() {
+    this.slideShowVisible = false;
   }
 }
