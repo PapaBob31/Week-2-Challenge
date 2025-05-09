@@ -1,12 +1,13 @@
 #product-images {
-	width: 40%;
-
+	width: 70%;
+	margin: auto;
 	div {
 		width: 100%;
 		height: fit-content;
 		img {
 			width: 100%;
 			height: auto;
+			border-radius: 10px;
 		}
 	}
 
@@ -36,4 +37,15 @@
 #displayed-img-thumbnail {
 	border: 2px solid hsl(26, 100%, 55%);
 	opacity: 40%;
+}
+
+@media (max-width: 850px) {
+	#product-images {
+		width: 100%;
+		div {
+			img {
+				border-radius: 0;
+			}
+		}
+	}
 }

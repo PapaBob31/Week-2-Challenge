@@ -8,13 +8,25 @@
 	box-sizing: border-box;
 }
 
+body {
+	width: 75%;
+	margin: auto;
+}
+
+@media (max-width: 1000px) {
+	body {
+		width: 85%;
+	}
+}
+
+@media (max-width: 850px) {
+	body {
+		width: 100%;
+	}
+}
+
 @media (max-width: 600px) {
 	* {
 		font-size: 14px;
 	}
-}
-
-body {
-	width: 80%;
-	margin: auto;
 }

@@ -1,4 +1,44 @@
 main {
+	padding: 5rem 0 0;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+}
+
+app-product-images{
+	width: 50%;
+	min-width: 450px;
+	margin-right: 3%;
+}
+
+app-product-details {
+	width: 35%;
+	min-width: 450px;
+}
+
+@media (max-width: 1000px) {
+	app-product-images{
+		min-width: 350px;
+	}
+
+	app-product-details {
+		min-width: 350px;
+	}
+
+}
+
+@media (max-width: 850px) {
+	main {
+		padding: 0;
+		display: block;
+	}
+	app-product-images{
+		min-width: unset;
+		width: full;
+	}
+
+	app-product-details {
+		min-width: unset;
+		width: full;
+	}
+
 }
