@@ -145,11 +145,42 @@
 
 @media (max-width: 850px) {
 	#product-images {
-		width: 100%;
-		div {
-			img {
-				border-radius: 0;
-			}
-		}
+		display: none;
 	}
+
+	#close-slideshow-btn {
+		display: none;
+	}
+
+	#product-slideshow {
+		position: static;
+		visibility: visible;
+		height: fit-content;
+		opacity: 100;
+		background-color: transparent;
+	}
+
+	#slideshow-images li {
+		border-radius: 0;
+		overflow-x: hidden;
+	}
+
+
+	#prev-btn {
+		left: 5%;
+	}
+
+	#next-btn {
+		right: 5%;
+	}
+
+	#slideshow-container {
+		width: 100%;
+		margin: 0;
+	}
+
+	#slideshow-thumbnails {
+		display: none;
+	}
+
 }
