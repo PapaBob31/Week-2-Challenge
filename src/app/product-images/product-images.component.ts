@@ -8,11 +8,9 @@ import { Component } from '@angular/core';
 })
 
 export class ProductImagesComponent {
-  displayedImg: {name: string; thumbNailLink: string; imgLink: string};
-  slideShowVisible = false;
-  slideLength = 0;
-  slideStyle = `transform: translateX(0)`
-  displayedSlideThumbNail = ""
+  displayedImg: {name: string; thumbNailLink: string; imgLink: string}; // product's main slideshow default slide image
+
+  // all the product's images and other attributes that make the data easier to work with
   images = [
     {
      name: "image-1",
@@ -36,6 +34,12 @@ export class ProductImagesComponent {
     }
   ]
 
+  //'cover' slideshow as in the slideshow that covers the whole page
+  slideShowVisible = false; // controls the visibility of the 'cover' slideshow. 
+  slideLength = 0; // equivalent to the number of 'cover' slideshow 'slides' that have moved off screen
+  slideStyle = `transform: translateX(0)` // css style to be applied to the main images container inside 'cover' slideshow
+  displayedSlideThumbNail = "" // thumbnail of the currently displayed slide in the 'cover' slideshow
+  
   constructor() {
     this.displayedImg = this.images[0]
     this.displayedSlideThumbNail = this.images[this.slideLength].name
@@ -60,15 +64,21 @@ export class ProductImagesComponent {
     if (this.slideLength === 0)
       return;
     else this.slideLength--;
+
+    // moves the whole slideshow container but the element the container is nested inside
+    // has a hidden overflow giving the illusion of a moving slideshow
     this.slideStyle = `transform: translateX(-${this.slideLength*100}%)`
-    this.displayedSlideThumbNail = this.images[this.slideLength].name
+    this.displayedSlideThumbNail = this.images[this.slideLength].name // update the currently visible slide's thumbnail
   }
 
   slideLeft() {
     if (this.slideLength === 3)
       return;
     else this.slideLength++;
+
+    // moves the whole slideshow container but the element the container is nested inside
+    // has a hidden overflow giving the illusion of a moving slideshow
     this.slideStyle = `transform: translateX(-${this.slideLength*100}%)`
-    this.displayedSlideThumbNail = this.images[this.slideLength].name
+    this.displayedSlideThumbNail = this.images[this.slideLength].name // update the currently visible slide's thumbnail
   }
 }
